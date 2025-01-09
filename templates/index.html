@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex flex-col justify-center items-center h-full px-3 w-screen">
+    <div class="flex flex-col gap-3 h-1/12 w-full md:w-5/12">
+        <h1 class="text-center" id="greeting-text">
+            How can I help you?
+        </h1>
+        <div class="relative">
+            <p class="text-center text-red-500 mb-3" id="error-text">
+            </p>
+            <form action="/chat" method="POST" id="chat-form" class="relative w-full">
+                <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+                    <!-- Input Text Box -->
+                    <input type="text" 
+                        placeholder="I'm looking for..." 
+                        class="w-full resize-none px-2 py-2.5 pr-20 text-base rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        required
+                        id="user-query"
+                        name="user_query"
+                    />
+                    <!-- Microphone Button -->
+                    <button
+                        id="start-voice"
+                        type="button"
+                        class="absolute right-16 flex items-center justify-center bg-blue-400 px-3 py-2 rounded-lg transition-all duration-200"
+                        style="width: 35px; height: 35px;"
+                    >
+                        <img src="../../static/images/imagess.png" alt="Microphone" id="mic-icon" class="w-5 h-5" />
+                    </button>
+                    <!-- Stop Microphone Button -->
+                    <button 
+                        id="stop-voice"
+                        type="button"
+                        class="absolute right-16 flex items-center justify-center bg-red-400 px-3 py-2 rounded-lg hidden"
+                        style="width: 35px; height: 35px;"
+                    >
+                        <img src="../../static/images/download.png" alt="Microphone" class="w-5 h-5" />
+                    </button>
+                    <!-- Search Button -->
+                    <button type="submit"
+                        class="absolute right-2 flex items-center justify-center bg-gray-400 px-3 py-2 rounded-lg"
+                        style="width: 35px; height: 35px;"
+                    >
+                        <div style="-webkit-transform: rotate(45deg); 
+                        -moz-transform: rotate(45deg); 
+                          -o-transform: rotate(45deg);
+                             transform: rotate(45deg);">
+                            &#9906;
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="../static/js/voice.js"></script>
+{% endblock %}
